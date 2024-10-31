@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript to JSON and Back</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        button {
+            margin: 10px 0;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript to JSON and Back</h1>
+
+<!-- Placeholder for showing the JavaScript object and JSON string -->
+<h3>JavaScript Object:</h3>
+<pre id="jsObjectDisplay"></pre>
+
+<h3>Converted to JSON String:</h3>
+<pre id="jsonStringDisplay"></pre>
+
+<h3>Back to JavaScript Object:</h3>
+<pre id="parsedObjectDisplay"></pre>
+
+<!-- Buttons to trigger conversions -->
+<button id="convertToJSONBtn">Convert JS Object to JSON</button>
+<button id="convertToJSBtn" disabled>Convert JSON Back to JS Object</button>
+
+<script>
+    // Create a JavaScript object
+    const employee = {
+        fname: "Alice",
+        lname: "Johnson",
+        age: 30,
+        isManager: true,
+        subordinates: [
+            { fname: "Bob", lname: "Smith", age: 25 },
+            { fname: "Charlie", lname: "Brown", age: 28 }
+        ]
+    };
+
+    // Display the original JavaScript object in the HTML
+    document.getElementById('jsObjectDisplay').textContent = JSON.stringify(employee, null, 4);
+
+    let jsonString;
+
+    // Convert JavaScript object to JSON string
+    document.getElementById('convertToJSONBtn').addEventListener('click', function() {
+        // Convert JavaScript object to JSON
+        jsonString = JSON.stringify(employee);
+        document.getElementById('jsonStringDisplay').textContent = jsonString;
+        // Enable the second button to convert JSON back to JavaScript
+        document.getElementById('convertToJSBtn').disabled = false;
+    });
+
+    // Convert JSON string back to JavaScript object
+    document.getElementById('convertToJSBtn').addEventListener('click', function() {
+        // Parse the JSON string back into a JavaScript object
+        const parsedObject = JSON.parse(jsonString);
+        // Display the parsed JavaScript object in the HTML
+        document.getElementById('parsedObjectDisplay').textContent = JSON.stringify(parsedObject, null, 4);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Attributes Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            background-color: #f4f4f4;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Employee List</h1>
+
+    <ul id="employeeList">
+        <li data-role="Manager">Alice Johnson</li>
+        <li data-role="Developer">Bob Smith</li>
+        <li data-role="Designer">Charlie Brown</li>
+        <li data-role="Tester">David Williams</li>
+    </ul>
+
+    <p id="displayRole">Click on an employee to see their role.</p>
+
+    <script>
+        // Select all list items
+        const employees = document.querySelectorAll('#employeeList li');
+
+        // Add click event listener to each employee
+        employees.forEach(employee => {
+            employee.addEventListener('click', function(evt) {
+                // Access the data-role attribute
+                // const role = evt.target.getAttribute('data-role');
+                
+                // Another method to access data attribute
+                const role = evt.target.dataset.role;
+
+                // Display the role in the paragraph
+                document.getElementById('displayRole').textContent = `${evt.target.textContent} is a ${role}.`;
+            });
+        });
+    </script>
+
+</body>
+</html>

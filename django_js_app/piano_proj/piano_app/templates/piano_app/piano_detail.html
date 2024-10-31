@@ -1,0 +1,31 @@
+{% extends "piano_app/layout.html" %}
+{% load humanize %}
+
+{% block body %}
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <h4>Brand: <em>{{piano.brand}}</em></h4>
+        <div>Size: {{piano.size}} cms</div>
+        <div>
+            Retail price: ${{piano.price|intcomma}}
+        </div>
+        {% if piano.imageUrl %}
+            <div class="col-md-4">
+                <img src="{{ piano.imageUrl }}" class="card-img" alt="{{ piano.title }}">
+            </div>
+            <div class="col-md-8">
+        {% else %}
+            <div class="col-md-12">
+        {% endif %}
+        <div>
+            Owner: {{piano.owner.username}}
+        </div>
+        <div>
+            Number of votes: {{piano.vote_count}}
+        </div>
+        
+    </div>
+</div>
+    
+{% endblock %}
